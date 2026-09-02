@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_partner_form_inherit_gestion_dual" model="ir.ui.view">
+        <field name="name">res.partner.form.inherit.gestion.dual</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='category_id']" position="after">
+                <field name="dual_es_alumno"/>
+                <field name="dual_es_tutor"/>
+            </xpath>
+            <xpath expr="//sheet/notebook" position="inside">
+                <page string="Dual" name="dual" invisible="not dual_es_alumno">
+                    <group string="Datos de formación dual"/>
+                </page>
+            </xpath>
+        </field>
+    </record>
+</odoo>
