@@ -11,7 +11,20 @@
             </xpath>
             <xpath expr="//sheet/notebook" position="inside">
                 <page string="Dual" name="dual" invisible="not dual_es_alumno">
-                    <group string="Datos de formación dual"/>
+                    <group string="Datos de formación dual" col="2">
+                        <group>
+                            <field name="dual_nota_media"/>
+                            <field name="dual_nivel_ingles"/>
+                            <field name="dual_nivel_euskera"/>
+                            <field name="dual_tutor_id" domain="[('dual_es_tutor', '=', True)]"/>
+                        </group>
+                        <group>
+                            <field name="dual_carnet_conducir"/>
+                            <field name="dual_coche_propio"/>
+                            <field name="dual_nuss"/>
+                            <field name="dual_permiso_trabajo"/>
+                        </group>
+                    </group>
                 </page>
             </xpath>
         </field>
