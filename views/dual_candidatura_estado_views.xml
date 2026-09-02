@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dual_candidatura_estado_tree" model="ir.ui.view">
+        <field name="name">dual.candidatura.estado.tree</field>
+        <field name="model">dual.candidatura.estado</field>
+        <field name="arch" type="xml">
+            <tree string="Estados de candidatura">
+                <field name="sequence" widget="handle"/>
+                <field name="name"/>
+                <field name="fold"/>
+                <field name="active" optional="show"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dual_candidatura_estado_form" model="ir.ui.view">
+        <field name="name">dual.candidatura.estado.form</field>
+        <field name="model">dual.candidatura.estado</field>
+        <field name="arch" type="xml">
+            <form string="Estado de candidatura">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="sequence"/>
+                        <field name="fold"/>
+                        <field name="active"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_dual_candidatura_estado" model="ir.actions.act_window">
+        <field name="name">Estados de candidatura</field>
+        <field name="res_model">dual.candidatura.estado</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+</odoo>

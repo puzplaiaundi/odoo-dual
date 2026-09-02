@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_dual_candidatura_user,dual.candidatura user,model_dual_candidatura,base.group_user,1,1,1,1
+access_dual_candidatura_estado_user,dual.candidatura.estado user,model_dual_candidatura_estado,base.group_user,1,0,0,0
+access_dual_candidatura_estado_system,dual.candidatura.estado system,model_dual_candidatura_estado,base.group_system,1,1,1,1

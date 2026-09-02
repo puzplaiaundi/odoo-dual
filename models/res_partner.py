@@ -69,3 +69,8 @@ class ResPartner(models.Model):
         default=False,
         help='Indica si el alumno o alumna dispone de permiso de trabajo en vigor.',
     )
+    dual_candidatura_ids = fields.One2many(
+        comodel_name='dual.candidatura',
+        inverse_name='alumno_id',
+        string='Candidaturas',
+    )

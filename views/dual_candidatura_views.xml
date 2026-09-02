@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_dual_candidatura_tree" model="ir.ui.view">
+        <field name="name">dual.candidatura.tree</field>
+        <field name="model">dual.candidatura</field>
+        <field name="arch" type="xml">
+            <tree string="Candidaturas">
+                <field name="alumno_id"/>
+                <field name="oportunidad_id" optional="show"/>
+                <field name="estado_id" optional="show"/>
+                <field name="create_date" optional="show" readonly="1" string="Fecha de creación"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="view_dual_candidatura_form" model="ir.ui.view">
+        <field name="name">dual.candidatura.form</field>
+        <field name="model">dual.candidatura</field>
+        <field name="arch" type="xml">
+            <form string="Candidatura">
+                <sheet>
+                    <group>
+                        <field name="alumno_id"/>
+                        <field name="oportunidad_id"/>
+                        <field name="estado_id"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids"/>
+                    <field name="activity_ids"/>
+                    <field name="message_ids"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_dual_candidatura_kanban" model="ir.ui.view">
+        <field name="name">dual.candidatura.kanban</field>
+        <field name="model">dual.candidatura</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="estado_id" group_create="0" group_delete="0" group_edit="0">
+                <field name="alumno_id"/>
+                <field name="oportunidad_id"/>
+                <field name="estado_id" options="{'no_create': True, 'no_create_edit': True, 'no_open': True}"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_global_click oe_kanban_card">
+                            <div class="o_kanban_record_title">
+                                <strong><field name="alumno_id"/></strong>
+                            </div>
+                            <div>
+                                <field name="oportunidad_id"/>
+                            </div>
+                            <div>
+                                <field name="estado_id"/>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="view_dual_candidatura_search" model="ir.ui.view">
+        <field name="name">dual.candidatura.search</field>
+        <field name="model">dual.candidatura</field>
+        <field name="arch" type="xml">
+            <search string="Buscar candidaturas">
+                <field name="alumno_id"/>
+                <field name="oportunidad_id"/>
+                <field name="estado_id"/>
+                <group expand="0" string="Agrupar por">
+                    <filter name="group_by_alumno_id" string="Alumno/a" context="{'group_by': 'alumno_id'}"/>
+                    <filter name="group_by_oportunidad_id" string="Oportunidad" context="{'group_by': 'oportunidad_id'}"/>
+                    <filter name="group_by_estado_id" string="Estado" context="{'group_by': 'estado_id'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_dual_candidatura" model="ir.actions.act_window">
+        <field name="name">Candidaturas</field>
+        <field name="res_model">dual.candidatura</field>
+        <field name="view_mode">tree,kanban,form</field>
+    </record>
+</odoo>

@@ -25,6 +25,17 @@
                             <field name="dual_permiso_trabajo"/>
                         </group>
                     </group>
+                    <notebook>
+                        <page string="Candidaturas">
+                            <field name="dual_candidatura_ids" context="{'default_alumno_id': id}">
+                                <tree string="Candidaturas">
+                                    <field name="oportunidad_id"/>
+                                    <field name="estado_id" optional="show"/>
+                                    <field name="create_date" optional="show" readonly="1" string="Fecha de creación"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
                 </page>
             </xpath>
         </field>
