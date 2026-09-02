@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <menuitem id="menu_gestion_dual_root" name="Gestión Dual" action="action_dual_candidatura"/>
+    <menuitem id="menu_gestion_dual_root" name="Gestión Dual" action="action_dual_candidatura" groups="gestion_dual.group_dual_user"/>
 
     <menuitem
         id="menu_gestion_dual_candidaturas"
         name="Candidaturas"
         parent="menu_gestion_dual_root"
         action="action_dual_candidatura"
+        groups="gestion_dual.group_dual_user"
     />
 
     <menuitem
         id="menu_gestion_dual_settings"
         name="Ajustes"
         parent="menu_gestion_dual_root"
-        groups="base.group_system"
+        groups="gestion_dual.group_dual_manager"
     />
 
     <menuitem
@@ -21,6 +22,6 @@
         name="Estados de candidatura"
         parent="menu_gestion_dual_settings"
         action="action_dual_candidatura_estado"
-        groups="base.group_system"
+        groups="gestion_dual.group_dual_manager"
     />
 </odoo>

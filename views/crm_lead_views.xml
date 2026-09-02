@@ -6,7 +6,7 @@
         <field name="inherit_id" ref="crm.crm_lead_view_form"/>
         <field name="arch" type="xml">
             <xpath expr="//sheet/notebook" position="inside">
-                <page string="Candidaturas" invisible="type != 'opportunity'">
+                <page string="Candidaturas" groups="gestion_dual.group_dual_user" invisible="type != 'opportunity'">
                     <field name="dual_candidatura_ids" context="{'default_oportunidad_id': id}">
                         <tree string="Candidaturas">
                             <field name="alumno_id"/>

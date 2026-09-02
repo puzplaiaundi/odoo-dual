@@ -8,4 +8,5 @@ class CrmLead(models.Model):
         comodel_name='dual.candidatura',
         inverse_name='oportunidad_id',
         string='Candidaturas',
+        groups='gestion_dual.group_dual_user',
     )

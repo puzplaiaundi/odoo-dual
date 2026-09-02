@@ -6,11 +6,11 @@
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="dual_es_alumno"/>
-                <field name="dual_es_tutor"/>
+                <field name="dual_es_alumno" groups="gestion_dual.group_dual_user"/>
+                <field name="dual_es_tutor" groups="gestion_dual.group_dual_user"/>
             </xpath>
             <xpath expr="//sheet/notebook" position="inside">
-                <page string="Dual" name="dual" invisible="not dual_es_alumno">
+                <page string="Dual" name="dual" groups="gestion_dual.group_dual_user" invisible="not dual_es_alumno">
                     <group string="Datos de formación dual" col="2">
                         <group>
                             <field name="dual_nota_media"/>
