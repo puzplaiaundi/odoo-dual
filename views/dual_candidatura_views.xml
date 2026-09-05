@@ -14,25 +14,33 @@
     </record>
 
     <record id="view_dual_candidatura_form" model="ir.ui.view">
-        <field name="name">dual.candidatura.form</field>
-        <field name="model">dual.candidatura</field>
-        <field name="arch" type="xml">
-            <form string="Candidatura">
-                <sheet>
-                    <group>
-                        <field name="alumno_id"/>
-                        <field name="oportunidad_id"/>
-                        <field name="estado_id"/>
-                    </group>
-                </sheet>
-                <div class="oe_chatter">
-                    <field name="message_follower_ids"/>
-                    <field name="activity_ids"/>
-                    <field name="message_ids"/>
-                </div>
-            </form>
-        </field>
-    </record>
+    <field name="name">dual.candidatura.form</field>
+    <field name="model">dual.candidatura</field>
+    <field name="arch" type="xml">
+        <form string="Candidatura">
+            <header>
+                <button name="action_open_full_form"
+                        type="object"
+                        string="Abrir formulario completo"
+                        icon="fa-external-link"/>
+            </header>
+
+            <sheet>
+                <group>
+                    <field name="alumno_id"/>
+                    <field name="oportunidad_id"/>
+                    <field name="estado_id"/>
+                </group>
+            </sheet>
+
+            <div class="oe_chatter">
+                <field name="message_follower_ids"/>
+                <field name="activity_ids"/>
+                <field name="message_ids"/>
+            </div>
+        </form>
+    </field>
+</record>
 
     <record id="view_dual_candidatura_kanban" model="ir.ui.view">
         <field name="name">dual.candidatura.kanban</field>

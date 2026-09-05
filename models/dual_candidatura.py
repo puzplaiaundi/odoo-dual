@@ -51,3 +51,23 @@ class DualCandidatura(models.Model):
         default=_default_estado_id,
         group_expand='_read_group_estado_id',
     )
+    def action_open_full_form(self):
+        self.ensure_one()
+
+        return {
+            "type": "ir.actions.act_window",
+            "name": "Candidatura",
+            "res_model": "dual.candidatura",
+            "res_id": self.id,
+            "view_mode": "form",
+            "views": [
+                (
+                    self.env.ref(
+                        "gestion_dual.view_dual_candidatura_form"
+                    ).id,
+                    "form",
+                )
+            ],
+            "target": "current",
+        }
+    
