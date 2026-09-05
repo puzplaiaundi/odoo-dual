@@ -5,19 +5,53 @@
         <field name="model">res.partner</field>
         <field name="inherit_id" ref="base.view_partner_form"/>
         <field name="arch" type="xml">
+
             <xpath expr="//field[@name='category_id']" position="after">
-                <field name="dual_es_alumno" groups="gestion_dual.group_dual_user"/>
-                <field name="dual_es_tutor" groups="gestion_dual.group_dual_user"/>
+                <field
+                    name="dual_es_alumno"
+                    groups="gestion_dual.group_dual_user"
+                />
+                <field
+                    name="dual_es_tutor"
+                    groups="gestion_dual.group_dual_user"
+                />
             </xpath>
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button
+                    name="action_view_dual_candidaturas"
+                    type="object"
+                    class="oe_stat_button"
+                    icon="fa-file-text-o"
+                    groups="gestion_dual.group_dual_user"
+                    invisible="not dual_es_alumno"
+                >
+                    <field
+                        name="dual_candidatura_count"
+                        widget="statinfo"
+                        string="Candidaturas"
+                    />
+                </button>
+            </xpath>
+
             <xpath expr="//sheet/notebook" position="inside">
-                <page string="Dual" name="dual" groups="gestion_dual.group_dual_user" invisible="not dual_es_alumno">
+                <page
+                    string="Dual"
+                    name="dual"
+                    groups="gestion_dual.group_dual_user"
+                    invisible="not dual_es_alumno"
+                >
                     <group string="Datos de formación dual" col="2">
                         <group>
                             <field name="dual_nota_media"/>
                             <field name="dual_nivel_ingles"/>
                             <field name="dual_nivel_euskera"/>
-                            <field name="dual_tutor_id" domain="[('dual_es_tutor', '=', True)]"/>
+                            <field
+                                name="dual_tutor_id"
+                                domain="[('dual_es_tutor', '=', True)]"
+                            />
                         </group>
+
                         <group>
                             <field name="dual_carnet_conducir"/>
                             <field name="dual_coche_propio"/>
@@ -25,19 +59,29 @@
                             <field name="dual_permiso_trabajo"/>
                         </group>
                     </group>
+
                     <notebook>
                         <page string="Candidaturas">
-                            <field name="dual_candidatura_ids" context="{'default_alumno_id': id}">
+                            <field
+                                name="dual_candidatura_ids"
+                                context="{'default_alumno_id': id}"
+                            >
                                 <tree string="Candidaturas">
                                     <field name="oportunidad_id"/>
                                     <field name="estado_id" optional="show"/>
-                                    <field name="create_date" optional="show" readonly="1" string="Fecha de creación"/>
+                                    <field
+                                        name="create_date"
+                                        optional="show"
+                                        readonly="1"
+                                        string="Fecha de creación"
+                                    />
                                 </tree>
                             </field>
                         </page>
                     </notebook>
                 </page>
             </xpath>
+
         </field>
     </record>
 </odoo>

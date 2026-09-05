@@ -1,4 +1,4 @@
-from odoo import fields, models
+from odoo import api, fields, models
 
 
 class ResPartner(models.Model):
@@ -85,3 +85,31 @@ class ResPartner(models.Model):
         string='Candidaturas',
         groups='gestion_dual.group_dual_user',
     )
+    dual_candidatura_count = fields.Integer(
+        string='Número de candidaturas',
+        compute='_compute_dual_candidatura_count',
+        groups='gestion_dual.group_dual_user',
+    )
+
+    @api.depends('dual_candidatura_ids')
+    def _compute_dual_candidatura_count(self):
+        for partner in self:
+            partner.dual_candidatura_count = len(
+                partner.dual_candidatura_ids
+            )
+
+    def action_view_dual_candidaturas(self):
+        self.ensure_one()
+
+        action = self.env['ir.actions.actions']._for_xml_id(
+            'gestion_dual.action_dual_candidatura'
+        )
+
+        action['domain'] = [
+            ('alumno_id', '=', self.id),
+        ]
+        action['context'] = {
+            'default_alumno_id': self.id,
+        }
+
+        return action
